@@ -1,0 +1,12 @@
+.notes-list-img{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.notes-list-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}

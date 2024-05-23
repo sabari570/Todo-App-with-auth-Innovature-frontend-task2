@@ -1,0 +1,50 @@
+.individual-task {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.unchecked-icon {
+    font-size: 10px;
+}
+
+.checked-icon {
+    font-size: 10px;
+    color: #4423A5;
+}
+
+.task-completed-status:hover {
+    cursor: pointer;
+}
+
+.task-completed {
+    text-decoration: line-through;
+}
+
+.task-header {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.task-options {
+    width: 15%;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.task-edit-option {
+    color: #4423A5;
+}
+
+.task-edit-option:hover,
+.task-delete-option:hover {
+    cursor: pointer;
+}
+
+.task-delete-option {
+    color: crimson;
+}

@@ -1,0 +1,122 @@
+.login-form {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.login-form-heading {
+    position: relative;
+    top: -1.5rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-profile-bg {
+    height: 40%;
+    width: 40%;
+}
+
+.input-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    border-bottom: 2px solid #d9d9d9;
+    position: relative;
+}
+
+.input-div.one {
+    margin-top: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+.input-icons {
+    position: absolute;
+    top: 25%;
+    align-self: flex-start;
+    color: #d9d9d9;
+}
+
+.input-fields {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-fields input {
+    position: relative;
+    left: 2%;
+    border: none;
+    outline: none;
+    background: none;
+    width: 87%;
+    height: 35px;
+    font-size: 0.7rem;
+}
+
+.auth-footer {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+
+.auth-footer a {
+    text-decoration: none;
+    color: #4424A4;
+}
+
+.login-btn {
+    width: 80%;
+    margin-top: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 16px;
+    background: #4424A4;
+    color: #fff;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+}
+
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE ####################################################*/
+@media only screen and (max-width: 768px) {
+    .login-form form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-form-heading{
+        margin-left: 2rem;
+        font-size: 0.8rem;
+    }
+
+    .input-fields input{
+        font-size: 0.6rem;
+    }
+
+    .auth-footer{
+        width: 80%;
+    }
+
+    .login-btn{
+        width: 100%;
+        font-size: 0.6rem;
+    }
+}
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px){
+    .login-form-heading{
+        top: -1rem;
+    }
+}

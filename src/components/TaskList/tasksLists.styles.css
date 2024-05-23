@@ -1,0 +1,13 @@
+.tasks-list {
+    max-height: 17rem;
+    overflow: auto;
+    margin-top: 1rem;
+}
+
+.tasks-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888;
+    font-size: 1rem;
+}

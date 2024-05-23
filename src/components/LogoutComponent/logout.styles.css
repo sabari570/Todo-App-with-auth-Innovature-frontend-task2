@@ -1,0 +1,64 @@
+.logout-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.7rem;
+    background-color: #4423A5;
+    border-radius: 25px;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-container button {
+    background-color: inherit;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.logout-container:hover {
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.10);
+}
+
+.logout-icon {
+    font-size: 0.8rem;
+    stroke-width: 2.5px;
+}
+
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE ####################################################*/
+@media only screen and (max-width: 768px) {
+
+    .logout-container button {
+        padding: 1rem;
+    }
+
+    .logout-label {
+        display: none;
+    }
+}
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px) {
+
+    .logout-container {
+        border-radius: 50%;
+    }
+
+    .logout-label {
+        display: none;
+    }
+
+}

@@ -1,0 +1,25 @@
+.label-name.one {
+    position: absolute;
+    left: 9%;
+    top: 50%;
+    color: #999;
+    transform: translateY(-50%);
+    transition: all ease-in 0.3s;
+    font-size: 14px;
+}
+
+.label-name.two {
+    position: absolute;
+    left: 9%;
+    top: 50%;
+    color: #999;
+    transform: translateY(-50%);
+    transition: all ease-in 0.3s;
+    font-size: 14px;
+}
+
+
+.label-name.focused {
+    top: 0%;
+    font-size: 0.6rem;
+}

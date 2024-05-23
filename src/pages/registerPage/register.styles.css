@@ -1,0 +1,7 @@
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px) {
+    .register-card {
+        padding: 2rem 1rem;
+    }
+}

@@ -1,0 +1,47 @@
+.home-card {
+    max-height: 80%;
+    padding: 2rem 1.5rem;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background: rgba(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.task-app-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-app-logo h3 {
+    color: #4423A5;
+    font-size: 1.2rem;
+}
+
+.task-app-logo img {
+    height: 2rem;
+    object-fit: contain;
+}
+
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE ####################################################*/
+@media only screen and (max-width: 768px) {
+
+    .home-card {
+        width: 65%;
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px) {
+    .home-card {
+        width: 80%;
+    }
+}

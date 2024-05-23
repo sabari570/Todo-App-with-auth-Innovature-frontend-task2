@@ -1,0 +1,52 @@
+.app-bg {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    height: auto;
+    padding: 2rem 0.5rem;
+    width: 60%;
+    display: flex;
+    background: rgba(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+.auth-bg-side {
+    width: 50%;
+    height: 100%;
+}
+
+.auth-form-side {
+    width: 50%;
+    height: 100%;
+}
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE ####################################################*/
+@media only screen and (max-width: 768px) {
+
+    .auth-bg-side {
+        display: none;
+    }
+
+    .auth-form-side {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px) {
+    .auth-card {
+        width: 80%;
+        padding: 2rem 1rem;
+    }
+}
