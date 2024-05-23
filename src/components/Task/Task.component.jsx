@@ -1,32 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./task.styles.css";
 import { ImCheckboxUnchecked } from "react-icons/im";
 import { ImCheckboxChecked } from "react-icons/im";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTasksList } from "../../store/tasks/tasks.selector";
-import { setTaskList } from "../../store/tasks/tasks.reducer";
+import useUpdateTask from "../../hooks/useUpdateTask";
 
 const Task = ({ task }) => {
-  const tasks = useSelector(selectTasksList);
-  const dispatch = useDispatch();
+  const { updateTask } = useUpdateTask();
 
-  const handleTaskIsCompleted = (taskId) => {
-    // Create a custom hook for updating the task isCompleted(data) and use it in here
-    const updatedTasks = tasks.map((task) =>
-      task._id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
-    );
-    dispatch(setTaskList(updatedTasks));
+  const handleTaskIsCompleted = async (e) => {
+    const taskData = {
+      ...task,
+      isCompleted: !task.isCompleted,
+    };
+    await updateTask(taskData);
   };
 
   return (
     <div className="individual-task">
       <div className="task-header">
-        <div
-          className="task-completed-status"
-          onClick={(e) => handleTaskIsCompleted(task._id)}
-        >
+        <div className="task-completed-status" onClick={handleTaskIsCompleted}>
           {task.isCompleted ? (
             <ImCheckboxChecked className="checked-icon" />
           ) : (
