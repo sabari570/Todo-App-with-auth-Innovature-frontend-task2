@@ -2,31 +2,28 @@ import { useDispatch } from "react-redux";
 import { setIsLoading } from "../store/loading/loading.reducer";
 import axios from "axios";
 import { URL_CONFIG } from "../utils/constants";
-import handleErrors from "../utils/handleErrors";
-import toast from "react-hot-toast";
 import useFetchTasks from "./useFetchTasks";
+import toast from "react-hot-toast";
 import { setCurrentUser } from "../store/user/user.reducer";
+import handleErrors from "../utils/handleErrors";
 import { setSelectedTask } from "../store/tasks/tasks.reducer";
 
-function useUpdateTask() {
+function useDeleteTask() {
   const dispatch = useDispatch();
   const { fetchTasks } = useFetchTasks();
 
-  const updateTask = async (taskData) => {
-    const { _id, title, isCompleted } = taskData;
-    const taskBody = { title, isCompleted: isCompleted.toString() };
+  const deleteTask = async (taskId) => {
     dispatch(setIsLoading(true));
     try {
       axios.defaults.withCredentials = true;
-      const response = await axios.put(
-        `${URL_CONFIG.BACKEND_BASE_URL}/task/update-task/${_id}`,
-        taskBody
+      const response = await axios.delete(
+        `${URL_CONFIG.BACKEND_BASE_URL}/task/delete-task/${taskId}`
       );
-      console.log("Response after updating the task: ", response.data);
+      console.log("Response after deleting task: ", response.data);
       toast.success(response.data.message);
       await fetchTasks();
     } catch (error) {
-      console.log("Error while updating task: ", error.response);
+      console.log("Error while deleting the task: ", error.response);
       const errorMessage = handleErrors(error.response.data);
       toast.error(errorMessage);
 
@@ -42,7 +39,7 @@ function useUpdateTask() {
     }
   };
 
-  return { updateTask };
+  return { deleteTask };
 }
 
-export default useUpdateTask;
+export default useDeleteTask;

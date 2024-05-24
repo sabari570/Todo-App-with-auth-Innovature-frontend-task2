@@ -29,15 +29,14 @@ function useCreateTask() {
       }
     } catch (error) {
       console.log("Error while creating a task: ", error.response);
+      const errorMessage = handleErrors(error.response.data);
+      toast.error(errorMessage);
 
       // If the token is invalid log the users out
-      if (error.response.status === 403) {
+      if (error.response.status === 403 || error.response.status === 401) {
         dispatch(setCurrentUser(null));
         return;
       }
-
-      const errorMessage = handleErrors(error.response.data);
-      toast.error(errorMessage);
     } finally {
       dispatch(setIsLoading(false));
     }

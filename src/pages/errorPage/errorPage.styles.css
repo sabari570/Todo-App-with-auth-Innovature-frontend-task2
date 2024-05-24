@@ -1,0 +1,93 @@
+.error-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: radial-gradient(circle farthest-corner at 0.2% 0.5%, #4423A5 3.7%, #54d4e4 92.7%);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.error-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.homepage-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #4423A5;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.homepage-button:hover {
+    background-color: #4423A5;
+    color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .error-container {
+        padding: 4rem 1rem;
+    }
+
+    .error-title {
+        font-size: 2rem;
+    }
+
+    .error-message {
+        font-size: 1rem;
+    }
+
+    .homepage-button {
+        font-size: 0.8rem;
+    }
+}
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px) {
+    .error-container {
+        height: 50%;
+    }
+
+    .error-title {
+        font-size: 1.6rem;
+    }
+
+    .error-message {
+        font-size: 0.8rem;
+    }
+
+    .homepage-button {
+        font-size: 0.7rem;
+    }
+}

@@ -7,10 +7,12 @@ import { MdDeleteForever } from "react-icons/md";
 import useUpdateTask from "../../hooks/useUpdateTask";
 import { useDispatch } from "react-redux";
 import { setSelectedTask } from "../../store/tasks/tasks.reducer";
+import useDeleteTask from "../../hooks/useDeleteTask";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
   const { updateTask } = useUpdateTask();
+  const { deleteTask } = useDeleteTask();
 
   const handleTaskIsCompleted = async (e) => {
     const taskData = {
@@ -22,6 +24,10 @@ const Task = ({ task }) => {
 
   const handleEditTask = () => {
     dispatch(setSelectedTask(task));
+  };
+
+  const handleDeleteTask = async (e) => {
+    await deleteTask(task._id);
   };
 
   return (
@@ -43,7 +49,10 @@ const Task = ({ task }) => {
 
       <div className="task-options">
         <MdEdit className="task-edit-option" onClick={handleEditTask} />
-        <MdDeleteForever className="task-delete-option" />
+        <MdDeleteForever
+          className="task-delete-option"
+          onClick={handleDeleteTask}
+        />
       </div>
     </div>
   );
