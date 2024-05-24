@@ -6,6 +6,7 @@ import handleErrors from "../utils/handleErrors";
 import toast from "react-hot-toast";
 import useFetchTasks from "./useFetchTasks";
 import { setCurrentUser } from "../store/user/user.reducer";
+import { setSelectedTask } from "../store/tasks/tasks.reducer";
 
 function useUpdateTask() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function useUpdateTask() {
       );
       console.log("Response after updating the task: ", response.data);
       toast.success(response.data.message);
+      dispatch(setSelectedTask(null));
       await fetchTasks();
     } catch (error) {
       console.log("Error while updating task: ", error.response);

@@ -15,6 +15,10 @@
     color: #4423A5;
 }
 
+.task-title {
+    word-break: break-all;
+}
+
 .task-completed-status:hover {
     cursor: pointer;
 }

@@ -5,8 +5,11 @@ import { ImCheckboxChecked } from "react-icons/im";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import useUpdateTask from "../../hooks/useUpdateTask";
+import { useDispatch } from "react-redux";
+import { setSelectedTask } from "../../store/tasks/tasks.reducer";
 
 const Task = ({ task }) => {
+  const dispatch = useDispatch();
   const { updateTask } = useUpdateTask();
 
   const handleTaskIsCompleted = async (e) => {
@@ -15,6 +18,10 @@ const Task = ({ task }) => {
       isCompleted: !task.isCompleted,
     };
     await updateTask(taskData);
+  };
+
+  const handleEditTask = () => {
+    dispatch(setSelectedTask(task));
   };
 
   return (
@@ -35,7 +42,7 @@ const Task = ({ task }) => {
       </div>
 
       <div className="task-options">
-        <MdEdit className="task-edit-option" />
+        <MdEdit className="task-edit-option" onClick={handleEditTask} />
         <MdDeleteForever className="task-delete-option" />
       </div>
     </div>

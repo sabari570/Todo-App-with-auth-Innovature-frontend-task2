@@ -1,6 +1,7 @@
 .tasks-list {
     max-height: 17rem;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     margin-top: 1rem;
 }
 
