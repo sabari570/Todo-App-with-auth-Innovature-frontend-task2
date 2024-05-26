@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux";
 import { setIsLoading } from "../store/loading/loading.reducer";
-import axios from "axios";
-import { URL_CONFIG } from "../utils/constants";
 import handleErrors from "../utils/handleErrors";
 import toast from "react-hot-toast";
 import useFetchTasks from "./useFetchTasks";
 import { setCurrentUser } from "../store/user/user.reducer";
 import { setSelectedTask } from "../store/tasks/tasks.reducer";
+import axiosInstance from "../services/interceptors";
 
 function useUpdateTask() {
   const dispatch = useDispatch();
@@ -17,9 +16,8 @@ function useUpdateTask() {
     const taskBody = { title, isCompleted: isCompleted.toString() };
     dispatch(setIsLoading(true));
     try {
-      axios.defaults.withCredentials = true;
-      const response = await axios.put(
-        `${URL_CONFIG.BACKEND_BASE_URL}/task/update-task/${_id}`,
+      const response = await axiosInstance.put(
+        `/task/update-task/${_id}`,
         taskBody
       );
       console.log("Response after updating the task: ", response.data);

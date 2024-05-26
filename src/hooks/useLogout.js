@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { setIsLoading } from "../store/loading/loading.reducer";
-import axios from "axios";
-import { URL_CONFIG } from "../utils/constants";
 import { setCurrentUser } from "../store/user/user.reducer";
+import axiosInstance from "../services/interceptors";
+import { setSelectedTask } from "../store/tasks/tasks.reducer";
 
 function useLogout() {
   const dispatch = useDispatch();
@@ -10,16 +10,14 @@ function useLogout() {
   const logout = async () => {
     dispatch(setIsLoading(true));
     try {
-      axios.defaults.withCredentials = true;
-      const response = await axios.get(
-        `${URL_CONFIG.BACKEND_BASE_URL}/auth/logout`
-      );
+      const response = await axiosInstance.get(`/auth/logout`);
       console.log("Response after logout: ", response.data);
       dispatch(setCurrentUser(null));
     } catch (error) {
       console.log("Error while logging out: ", error.response);
       dispatch(setCurrentUser(null));
     } finally {
+      dispatch(setSelectedTask(null));
       dispatch(setIsLoading(false));
     }
   };

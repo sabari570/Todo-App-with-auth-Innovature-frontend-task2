@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux";
 import { setIsLoading } from "../store/loading/loading.reducer";
-import axios from "axios";
-import { URL_CONFIG } from "../utils/constants";
 import useFetchTasks from "./useFetchTasks";
 import toast from "react-hot-toast";
 import { setCurrentUser } from "../store/user/user.reducer";
 import handleErrors from "../utils/handleErrors";
 import { setSelectedTask } from "../store/tasks/tasks.reducer";
+import axiosInstance from "../services/interceptors";
 
 function useDeleteTask() {
   const dispatch = useDispatch();
@@ -15,9 +14,8 @@ function useDeleteTask() {
   const deleteTask = async (taskId) => {
     dispatch(setIsLoading(true));
     try {
-      axios.defaults.withCredentials = true;
-      const response = await axios.delete(
-        `${URL_CONFIG.BACKEND_BASE_URL}/task/delete-task/${taskId}`
+      const response = await axiosInstance.delete(
+        `/task/delete-task/${taskId}`
       );
       console.log("Response after deleting task: ", response.data);
       toast.success(response.data.message);

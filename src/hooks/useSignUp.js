@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setIsLoading } from "../store/loading/loading.reducer";
 import handleErrors from "../utils/handleErrors";
-import axios from "axios";
-import { URL_CONFIG } from "../utils/constants";
-import { setCurrentUser } from "../store/user/user.reducer";
+import axiosInstance from "../services/interceptors";
 
 function useSignUp() {
   const dispatch = useDispatch();
@@ -13,12 +11,7 @@ function useSignUp() {
   const signUp = async (userData) => {
     dispatch(setIsLoading(true));
     try {
-      // Necessary for storing cookies in browser
-      axios.defaults.withCredentials = true;
-      const response = await axios.post(
-        `${URL_CONFIG.BACKEND_BASE_URL}/auth/register`,
-        userData
-      );
+      const response = await axiosInstance.post(`/auth/register`, userData);
       const newUser = await response.data;
 
       if (!newUser) {

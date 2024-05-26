@@ -1,11 +1,10 @@
 import { useDispatch } from "react-redux";
 import { setIsLoading } from "../store/loading/loading.reducer";
-import axios from "axios";
-import { URL_CONFIG } from "../utils/constants";
 import handleErrors from "../utils/handleErrors";
 import toast from "react-hot-toast";
 import useFetchTasks from "./useFetchTasks";
 import { setCurrentUser } from "../store/user/user.reducer";
+import axiosInstance from "../services/interceptors";
 
 function useCreateTask() {
   const dispatch = useDispatch();
@@ -17,16 +16,10 @@ function useCreateTask() {
         toast.error("Please enter the task title");
         return;
       }
-      axios.defaults.withCredentials = true;
-      const response = await axios.post(
-        `${URL_CONFIG.BACKEND_BASE_URL}/task/create-task`,
-        taskData
-      );
+      const response = await axiosInstance.post(`/task/create-task`, taskData);
       console.log("Response after creating a task: ", response.data);
-      if (response.status === 201) {
-        toast.success(response.data.message);
-        await fetchTasks();
-      }
+      toast.success(response.data.message);
+      await fetchTasks();
     } catch (error) {
       console.log("Error while creating a task: ", error.response);
       const errorMessage = handleErrors(error.response.data);
