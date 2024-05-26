@@ -12,7 +12,7 @@
 
 .checked-icon {
     font-size: 10px;
-    color: #4423A5;
+    color: var(--primary-color);
 }
 
 .task-title {
@@ -41,7 +41,7 @@
 }
 
 .task-edit-option {
-    color: #4423A5;
+    color: var(--primary-color);
 }
 
 .task-edit-option:hover,

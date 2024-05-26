@@ -14,6 +14,7 @@ const LoginForm = () => {
   };
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
+  const [isEyeOpen, setIsEyeOpen] = useState(false);
   const { login } = useLogin();
 
   const [userData, setUserData] = useState(INITIAL_USERDATA);
@@ -29,6 +30,10 @@ const LoginForm = () => {
     console.log("Login form submitted:", userData);
     await login(userData);
     setUserData(INITIAL_USERDATA);
+  };
+
+  const onPasswordEyeToogle = (e) => {
+    setIsEyeOpen(!isEyeOpen);
   };
 
   return (
@@ -72,7 +77,7 @@ const LoginForm = () => {
           <div className="input-fields">
             <FormInput
               className="password"
-              type="password"
+              type={isEyeOpen ? "text" : "password"}
               name="password"
               value={userData.password}
               onFocus={() => setPasswordFocused(true)}
@@ -83,6 +88,9 @@ const LoginForm = () => {
               labelFocused={passwordFocused}
               labelProperty={userData.password}
               isRequired={true}
+              showPasswordEye={true}
+              isEyeOpen={isEyeOpen}
+              onPasswordEyeClick={onPasswordEyeToogle}
             />
           </div>
         </div>

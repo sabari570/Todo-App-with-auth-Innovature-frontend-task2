@@ -18,6 +18,7 @@ const RegisterForm = () => {
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [userData, setUserData] = useState(INITIAL_USERDATA);
+  const [isEyeOpen, setIsEyeOpen] = useState(false);
 
   const { signUp } = useSignUp();
 
@@ -32,6 +33,10 @@ const RegisterForm = () => {
     console.log("Response from register component: ", userData);
     await signUp(userData);
     setUserData(INITIAL_USERDATA);
+  };
+
+  const onPasswordEyeToogle = (e) => {
+    setIsEyeOpen(!isEyeOpen);
   };
 
   return (
@@ -99,7 +104,7 @@ const RegisterForm = () => {
           <div className="input-fields">
             <FormInput
               className="password"
-              type="password"
+              type={isEyeOpen ? "text" : "password"}
               name="password"
               value={userData.password}
               onFocus={() => setPasswordFocused(true)}
@@ -110,6 +115,9 @@ const RegisterForm = () => {
               labelFocused={passwordFocused}
               labelProperty={userData.password}
               isRequired={true}
+              showPasswordEye={true}
+              isEyeOpen={isEyeOpen}
+              onPasswordEyeClick={onPasswordEyeToogle}
             />
           </div>
         </div>

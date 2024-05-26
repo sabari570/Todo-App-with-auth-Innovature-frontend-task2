@@ -1,5 +1,7 @@
 import React from "react";
-import './forminput.styles.css';
+import "./forminput.styles.css";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const FormInput = (props) => {
   const {
@@ -15,7 +17,10 @@ const FormInput = (props) => {
     name,
     pattern,
     value,
-    isRequired
+    isRequired,
+    showPasswordEye,
+    onPasswordEyeClick,
+    isEyeOpen,
   } = props;
   return (
     <>
@@ -37,6 +42,14 @@ const FormInput = (props) => {
         required={isRequired}
         pattern={pattern}
       />
+      <div className="password-eye-icon" onClick={onPasswordEyeClick}>
+        {showPasswordEye &&
+          (isEyeOpen ? (
+            <FaEye className="eye-icon" />
+          ) : (
+            <FaEyeSlash className="eye-icon" />
+          ))}
+      </div>
     </>
   );
 };
