@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import { useNavigate } from "react-router-dom";
 import useFetchTasks from "../../hooks/useFetchTasks";
-import LogoutBtn from "../../components/LogoutComponent/Logout.component";
+import SideBar from "../../components/Sidebar/SideBar.component";
 
 const Home = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -30,8 +30,8 @@ const Home = () => {
 
   return (
     <div className="app-bg">
+      <SideBar />
       <Homecard />
-      <LogoutBtn />
     </div>
   );
 };

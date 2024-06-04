@@ -48,7 +48,7 @@ const TaskFormInput = () => {
             name="title"
             value={task.title}
             onChange={onChangeHandle}
-            placeholder="Add your task"
+            placeholder="Add your todo"
           />
           {selectedTask ? (
             <button className="add-task-btn" type="submit">

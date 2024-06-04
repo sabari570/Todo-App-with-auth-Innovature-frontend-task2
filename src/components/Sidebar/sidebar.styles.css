@@ -1,0 +1,124 @@
+.sidebar-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.sidebar-wrapper #sidebar {
+    position: fixed;
+    height: 100%;
+    width: 270px;
+    left: -270px;
+    background: #f0f0f0;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.user-profile-bg {
+    height: 15rem;
+    width: 270px;
+    background: var(--primary-color);
+}
+
+.user-profile-bg .sidebar-title {
+    line-height: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.user-profile-bg-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.user-profile-bg-image img {
+    height: 70%;
+    width: 70%;
+}
+
+.sidebar-wrapper .sidebar-menu-btn {
+    position: fixed;
+    left: 10px;
+    top: 1rem;
+    color: var(--primary-color);
+    background: #fff;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    z-index: 3;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+#sidebar-btn:checked~.sidebar-menu-btn {
+    left: 250px;
+    background: var(--primary-color);
+    color: #fff;
+}
+
+#sidebar-btn:checked~#sidebar {
+    left: 0px;
+}
+
+#sidebar-btn:checked~.sidebar-menu-btn i:before {
+    content: "\f00d";
+}
+
+#sidebar .logout-btn {
+    margin-top: 0.8rem;
+    padding: 0 1rem;
+}
+
+
+/* DESINGING THE SIDEBAR PROFILE INFO */
+.profile-items {
+    margin-top: 1rem;
+    padding: 0 1rem;
+}
+
+.profile-list-items {
+    margin-bottom: 0.5rem;
+}
+
+.profile-list-items .list-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+}
+
+.profile-list-items p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+
+
+/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
+
+@media screen and (max-width: 480px) {
+    .user-profile-bg {
+        width: 271px;
+    }
+
+    #sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #sidebar .logout-btn{
+        margin-bottom: 1rem;
+    }
+}

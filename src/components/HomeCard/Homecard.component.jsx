@@ -7,7 +7,7 @@ const Homecard = () => {
   return (
     <div className="home-card">
       <div className="task-app-logo">
-        <h3>Task App</h3>
+        <h3>Todo-List</h3>
         <img src={TaskAppLogo} />
       </div>
 

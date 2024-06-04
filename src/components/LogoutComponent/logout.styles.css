@@ -1,10 +1,6 @@
 .logout-container {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.7rem;
     background-color: var(--primary-color);
     border-radius: 25px;
-    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +14,7 @@
     font-size: 0.7rem;
     font-weight: 500;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.8rem 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -34,31 +30,4 @@
 .logout-icon {
     font-size: 0.8rem;
     stroke-width: 2.5px;
-}
-
-
-/* ####################################################  MAKING THE COMPONENT RESPONSIVE ####################################################*/
-@media only screen and (max-width: 768px) {
-
-    .logout-container button {
-        padding: 1rem;
-    }
-
-    .logout-label {
-        display: none;
-    }
-}
-
-/* ####################################################  MAKING THE COMPONENT RESPONSIVE FOR MOBILE SCREENS ####################################################*/
-
-@media screen and (max-width: 480px) {
-
-    .logout-container {
-        border-radius: 50%;
-    }
-
-    .logout-label {
-        display: none;
-    }
-
 }
