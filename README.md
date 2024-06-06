@@ -123,10 +123,6 @@ npm run dev
 - Notifications using React Hot Toast
 - Responsive design with various components
 
-## Screenshots
-
-_Add screenshots of your application here._
-
 ## Error Handling
 
 Errors are handled using a custom error handler utility that formats error messages for better readability.
@@ -164,3 +160,7 @@ Custom hook for deleting a task.
 ## Axios Interceptor
 
 The axios interceptor is configured to handle HTTP requests and responses, managing authentication tokens and error handling seamlessly.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
