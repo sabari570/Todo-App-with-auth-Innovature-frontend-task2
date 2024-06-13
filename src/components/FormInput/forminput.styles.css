@@ -14,8 +14,12 @@
     top: 50%;
     color: #999;
     transform: translateY(-50%);
-    transition: all ease-in 0.3s;
+    transition: all 0.3s ease-in;
     font-size: 14px;
+}
+
+.label-name.one.show-error {
+    color: red;
 }
 
 
@@ -31,6 +35,6 @@
     cursor: pointer;
 }
 
-.eye-icon{
+.eye-icon {
     color: #30157a;
 }

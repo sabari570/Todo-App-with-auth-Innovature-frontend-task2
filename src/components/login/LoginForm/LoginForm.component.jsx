@@ -15,6 +15,7 @@ const LoginForm = () => {
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [isEyeOpen, setIsEyeOpen] = useState(false);
+  const [emailError, setEmailError] = useState("");
   const { login } = useLogin();
 
   const [userData, setUserData] = useState(INITIAL_USERDATA);
@@ -23,13 +24,23 @@ const LoginForm = () => {
     setUserData((prevState) => {
       return { ...prevState, [e.target.name]: e.target.value };
     });
+
+    if (e.target.name === "email") {
+      const emailRegex = /[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/;
+      const isValidEmail = emailRegex.test(e.target.value.toLowerCase());
+      setEmailError(isValidEmail ? "" : "Invalid email format");
+    }
   };
 
   const onHandleLoginSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login form submitted:", userData);
-    await login(userData);
-    setUserData(INITIAL_USERDATA);
+    if (!emailError && userData.email && userData.password) {
+      console.log("Login form submitted:", userData);
+      await login(userData);
+      setUserData(INITIAL_USERDATA);
+    } else {
+      console.log("Form has errors. Please correct them.");
+    }
   };
 
   const onPasswordEyeToogle = (e) => {
@@ -48,25 +59,25 @@ const LoginForm = () => {
           <h3>Login to your account</h3>
         </div>
 
-        <div className="input-div one">
-          <div className="input-icons">
+        <div className={`input-div one ${emailError && "show-error"}`}>
+          <div className={`input-icons ${emailError && "show-error"}`}>
             <IoMdMail />
           </div>
           <div className="input-fields">
             <FormInput
               type="text"
               name="email"
-              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
               value={userData.email}
               onFocus={() => setEmailFocused(true)}
               onBlur={() => setEmailFocused(false)}
               onChange={changeInputHandler}
               label="Email"
-              labelClassnames="label-name one"
+              labelClassnames={`label-name one ${emailError && "show-error"}`}
               labelFocused={emailFocused}
               labelProperty={userData.email}
               isRequired={true}
             />
+            <div className="show-error-message">{emailError}</div>
           </div>
         </div>
 

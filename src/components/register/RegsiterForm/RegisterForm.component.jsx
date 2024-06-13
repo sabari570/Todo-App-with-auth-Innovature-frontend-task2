@@ -19,6 +19,8 @@ const RegisterForm = () => {
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [userData, setUserData] = useState(INITIAL_USERDATA);
   const [isEyeOpen, setIsEyeOpen] = useState(false);
+  const [usernameError, setUsernameError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const { signUp } = useSignUp();
 
@@ -26,13 +28,35 @@ const RegisterForm = () => {
     setUserData((prevState) => {
       return { ...prevState, [e.target.name]: e.target.value };
     });
+
+    if (e.target.name === "name") {
+      const usernameRegex = /^[A-Za-z0-9]{3,16}$/;
+      const isValidUsername = usernameRegex.test(e.target.value.toLowerCase());
+      setUsernameError(isValidUsername ? "" : "Invalid username format");
+    }
+
+    if (e.target.name === "email") {
+      const emailRegex = /[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/;
+      const isValidEmail = emailRegex.test(e.target.value.toLowerCase());
+      setEmailError(isValidEmail ? "" : "Invalid email format");
+    }
   };
 
   const onHandleRegisterSubmit = async (e) => {
     e.preventDefault();
-    console.log("Response from register component: ", userData);
-    await signUp(userData);
-    setUserData(INITIAL_USERDATA);
+    if (
+      !usernameError &&
+      userData.name &&
+      !emailError &&
+      userData.email &&
+      userData.password
+    ) {
+      console.log("Response from register component: ", userData);
+      await signUp(userData);
+      setUserData(INITIAL_USERDATA);
+    } else {
+      console.log("Form has errors. Please correct them.");
+    }
   };
 
   const onPasswordEyeToogle = (e) => {
@@ -51,8 +75,8 @@ const RegisterForm = () => {
           <h3>Create your Account</h3>
         </div>
 
-        <div className="input-div one">
-          <div className="input-icons">
+        <div className={`input-div one ${usernameError && "show-error"}`}>
+          <div className={`input-icons ${usernameError && "show-error"}`}>
             <FaUser />
           </div>
           <div className="input-fields">
@@ -60,40 +84,41 @@ const RegisterForm = () => {
               className="email"
               type="text"
               name="name"
-              pattern="^[A-Za-z0-9]{3,16}$"
               value={userData.name}
               onFocus={() => setUsernameFocused(true)}
               onBlur={() => setUsernameFocused(false)}
               onChange={changeInputHandler}
               label="Username"
-              labelClassnames="label-name one"
+              labelClassnames={`label-name one ${
+                usernameError && "show-error"
+              }`}
               labelFocused={usernameFocused}
               labelProperty={userData.name}
               isRequired={true}
             />
+            <div className="show-error-message">{usernameError}</div>
           </div>
         </div>
 
-        <div className="input-div one">
-          <div className="input-icons">
+        <div className={`input-div one ${emailError && "show-error"}`}>
+          <div className={`input-icons ${emailError && "show-error"}`}>
             <IoMdMail />
           </div>
           <div className="input-fields">
             <FormInput
-              className="email"
-              type="email"
+              type="text"
               name="email"
-              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
               value={userData.email}
               onFocus={() => setEmailFocused(true)}
               onBlur={() => setEmailFocused(false)}
               onChange={changeInputHandler}
               label="Email"
-              labelClassnames="label-name one"
+              labelClassnames={`label-name one ${emailError && "show-error"}`}
               labelFocused={emailFocused}
               labelProperty={userData.email}
               isRequired={true}
             />
+            <div className="show-error-message">{emailError}</div>
           </div>
         </div>
 

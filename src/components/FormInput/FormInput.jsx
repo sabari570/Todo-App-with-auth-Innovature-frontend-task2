@@ -40,7 +40,6 @@ const FormInput = (props) => {
         onBlur={onBlur}
         onChange={onChange}
         required={isRequired}
-        pattern={pattern}
       />
       <div className="password-eye-icon" onClick={onPasswordEyeClick}>
         {showPasswordEye &&
